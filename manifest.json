@@ -1,0 +1,28 @@
+{
+  "claim_boundary": "The supplied corpus is synthetic, owned-fixture, and networkless. It is not a live MCP/API test, production evidence, external identity binding, security audit, certification, endorsement, or adoption claim.",
+  "files": {
+    "README.md": "4a7342ec554224533f769ad230a053264485ad95d99dbb9d9cd2e963bd9be5c0",
+    "build_replay_packet.py": "b8746a0efba6cacf6c90358954760f2bd9e373c8a9d9fa10b99a533c95841601",
+    "event_bundle.py": "24cd0fdf183dbabff7a9f8ab7dd5b9209e79ce769dcf6a8a8516c93be9fd7a0a",
+    "executor.py": "c008d2dd69956dcec334ed3840942dce4580de20f78dfcbb0fe1982f30fe2231",
+    "profile.py": "20bd7d11c981bd66694fafdad9dc7b70dc5c19bfe6c7e45e9fef53d864d7acbb",
+    "replay-packets/authority-execution-replay-v1.json": "afaf6090332d636e3c36a6110073e601c2348a38222520d29184cc602ea83a08",
+    "tests/test_profile.py": "f93fd4dd665eafaaab02ea90e06c75c9bfe477dd7c3cb8c7f3faf289dd60f11e",
+    "tests/test_replay_packet.py": "a884232632ce345b026c039b85110d3fb5bedd4e9e7088fb17342f4a7b4468bd",
+    "verify_replay_packet.py": "4f4e30e058436ad2eac9295634f225bbc070b8e7acb738b41c8b67f1160c56e0"
+  },
+  "independence_rule": "Do not import, copy, or inspect verify_replay_packet.py before independently implementing a verifier. A matching or divergent result should identify this packet SHA-256 and its limits.",
+  "packet_sha256": "afaf6090332d636e3c36a6110073e601c2348a38222520d29184cc602ea83a08",
+  "purpose": "independent implementation and replay of a synthetic authority-to-execution fixture contract",
+  "replay_steps": [
+    "cd source",
+    "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -v",
+    "PYTHONDONTWRITEBYTECODE=1 python3 verify_replay_packet.py replay-packets/authority-execution-replay-v1.json"
+  ],
+  "required_controls": [
+    "allow-exact-action",
+    "deny-wrong-target",
+    "deny-post-approval-mutation"
+  ],
+  "schema_version": "0.1-internal-handoff"
+}
